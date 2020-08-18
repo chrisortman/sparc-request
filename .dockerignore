@@ -4,3 +4,12 @@ log
 tmp
 coverage
 public/assets
+node_modules
+tags
+db/backup
+.env
+.gemset
+.studiorc
+.vagrant
+.git
+.bundle
