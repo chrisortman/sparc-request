@@ -42,8 +42,9 @@ rsync -ahr -delete --exclude "system" "${RAILS_ROOT}/public/" "${PUBLIC_PATH}"
 
 case "${COMMAND}" in
   server)
+    mkdir -p tmp/pids
     rm -f tmp/pids/server.pid
-    exec bundle exec puma -C config/puma.rb -b 0.0.0.0 
+    exec bundle exec puma -C config/puma.rb -b tcp://0.0.0.0 -p "${RAILS_PORT}"
     ;;
   jobs)
     exec bundle exec bin/delayed_job -e ${RAILS_ENV} run
