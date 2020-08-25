@@ -85,6 +85,8 @@ SparcRails::Application.configure do
     require 'syslog/logger'
     logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'sparc-request')
     config.logger = logger
+  elsif ENV["RAILS_LOG_TO_STDOUT"].present?
+    config.logger = ActiveSupport::TaggedLogging.new(Logger.new(STDOUT))
   end
 
   # Use a different cache store in production
