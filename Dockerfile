@@ -3,6 +3,7 @@ LABEL maintainer="chris-ortman@uiowa.edu"
 
 # throw errors if Gemfile has been modified since Gemfile.lock
 RUN gem install bundler -v 2.0.2
+RUN bundle config --global frozen 1
 
 RUN mkdir /app
 WORKDIR /app

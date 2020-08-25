@@ -47,7 +47,8 @@ case "${COMMAND}" in
     exec bundle exec puma -C config/puma.rb -b tcp://0.0.0.0 -p "${RAILS_PORT}"
     ;;
   jobs)
-    exec bundle exec bin/delayed_job -e ${RAILS_ENV} run
+    mkdir -p tmp/pids
+    exec bundle exec bin/delayed_job run
     ;;
   console)
     exec bundle exec rails console
